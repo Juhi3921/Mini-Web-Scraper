@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Mini Web Scraper</title>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        Mini Web Scraper </div>
+</header>
+<main>
+    <!-- URL TOOLBAR -->
+    <section class="toolbar">
+        <label for="urlInput">
+            Website URL</label>
+        <div class="url-row">
+            <input
+                id="urlInput"
+                type="text"
+                placeholder="https://example.com"
+            >
+            <button
+                onclick="scrapeWebsite()"
+            >
+                Scrape </button>
+        </div>
+    </section>
+    <!-- STATUS -->
+    <section class="status-line">
+        <span class="status-dot"></span>
+        <span id="message">
+            Ready </span>
+    </section>
+    <!-- RESULTS -->
+    <section
+        id="results"
+        class="hidden"
+    >
+        <!-- PAGE INFORMATION -->
+        <div class="section-title">
+            Page information
+        </div>
+        <div class="info-table">
+            <div class="info-row">
+                <div class="info-label">
+                    Title
+                </div>
+                <div id="pageTitle">
+                    -
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    URL
+                </div>
+                <div
+                    id="pageUrl"
+                    class="mono"
+                >
+                    -
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    HTTP status
+                </div>
+                <div id="httpStatus">
+                    -
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    Response time
+                </div>
+                <div id="responseTime">
+                    -
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">
+                    Scraped at
+                </div>
+                <div id="scrapeTime">
+                    -
+                </div>
+            </div>
+        </div>
+        <!-- STATISTICS -->
+        <div class="section-title">
+            Statistics
+        </div>
+        <div class="stats-table">
+            <div>
+                <strong id="headingCount">
+                    0
+                </strong>
+                <span>
+                    Headings
+                </span>
+            </div>
+            <div>
+                <strong id="linkCount">
+                    0
+                </strong>
+                <span>
+                    Links
+                </span>
+            </div>
+            <div>
+                <strong id="imageCount">
+                    0
+                </strong>
+                <span>
+                    Images
+                </span>
+            </div>
+            <div>
+                <strong id="paragraphCount">
+                    0
+                </strong>
+                <span>
+                    Paragraphs
+                </span>
+            </div>
+        </div>
+        <!-- HEADINGS + LINKS -->
+        <div class="data-grid">
+            <section class="data-section">
+                <div class="data-heading">
+                    Headings
+                </div>
+                <div
+                    id="headingsList"
+                    class="data-list"
+                ></div>
+            </section>
+            <section class="data-section">
+                <div class="data-heading">
+                    Links
+                </div>
+                <div
+                    id="linksList"
+                    class="data-list"
+                ></div>
+            </section>
+        </div>
+        <!-- PAGE TEXT -->
+        <section class="data-section">
+            <div class="data-heading">
+                Page text
+            </div>
+            <div
+                id="paragraphList"
+                class="text-list"
+            ></div>
+        </section>
+        <!-- IMAGE PREVIEW -->
+        <section class="data-section">
+            <div class="data-heading">
+                Images
+            </div>
+            <div
+                id="imagesList"
+                class="image-grid"
+            ></div>
+        </section>
+        <!-- EXPORT -->
+        <div class="export-area">
+            <div class="section-title">
+                Export results
+            </div>
+            <div class="export-buttons">
+                <button
+                    onclick="downloadTXT()"
+                    class="export-button"
+                >
+                    Download TXT </button>
+                <button
+                    onclick="downloadJSON()"
+                    class="export-button secondary"
+                >
+                    Download JSON         </button>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- FOoTER -->
+<footer>
+    Mini Web Scraper ·
+    Python / Flask / BeautifulSoup
+</footer>
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+</body>
+</html>
